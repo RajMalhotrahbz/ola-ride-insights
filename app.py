@@ -173,11 +173,11 @@ with tabs[4]:
     c3,c4=st.columns(2)
     with c3:
         if success['driver_ratings'].dropna().size:
-            fig=px.hist(success,x='driver_ratings',nbins=20,title='Driver rating distribution')
+            fig=px.histogram(success,x='driver_ratings',nbins=20,title='Driver rating distribution')
             st.plotly_chart(fig,use_container_width=True)
     with c4:
         if success['customer_rating'].dropna().size:
-            fig=px.hist(success,x='customer_rating',nbins=20,title='Customer rating distribution')
+            fig=px.histogram(success,x='customer_rating',nbins=20,title='Customer rating distribution')
             st.plotly_chart(fig,use_container_width=True)
     ratingveh=success.groupby('vehicle_type')[['driver_ratings','customer_rating']].mean().reset_index()
     fig=px.bar(ratingveh,x='vehicle_type',y=['driver_ratings','customer_rating'],barmode='group',title='Customer vs driver ratings by vehicle',labels={'vehicle_type':'Vehicle type','value':'Rating','variable':'Rating type'})
